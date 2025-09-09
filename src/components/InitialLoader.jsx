@@ -1,217 +1,161 @@
+import { useState, useEffect } from "react";
 
-import React, { useState, useEffect } from 'react';
+export default function Preloader({ onFinish }) {
+	const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
+	const [assetsLoaded, setAssetsLoaded] = useState(false);
+	const [animationDone, setAnimationDone] = useState(false);
 
-export default function InitialLoader() {
-  const [progress, setProgress] = useState(0);
-  const [loadingText, setLoadingText] = useState('INITIALIZING');
-  const [dots, setDots] = useState('');
-  const [isComplete, setIsComplete] = useState(false);
+	const letters = ["BITS", "2", "BYTES", "2", "K", "2", "5"];
+	const animationClasses = ["fromRightOutBottom", "fromTopOutRight", "fromLeftOutTop", "fromBottomOutLeft", "fromRightOutTop", "fromBottomOutRight", "fromLeftOutBottom", "fromTopOutRight", "fromRightOutTop", "fromBottomOutLeft", "fromLeftOutTop"];
 
-  useEffect(() => {
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          setIsComplete(true);
-          return 100;
-        }
-        return prev + Math.random() * 3;
-      });
-    }, 50);
+	useEffect(() => {
+		const assetsToPreload = ["/b2b.svg", "/retro.webp"];
+		let cancelled = false;
 
-    const textInterval = setInterval(() => {
-      const texts = [
-        'INITIALIZING TECH FEST',
-        'LOADING EVENTS',
-        'SYNCING INNOVATIONS',
-        'PREPARING EXPERIENCE',
-        'ALMOST READY'
-      ];
-      setLoadingText(texts[Math.floor(Math.random() * texts.length)]);
-    }, 1800);
+		async function preload() {
+			if (typeof window === "undefined") {
+				setAssetsLoaded(true);
+				return;
+			}
 
-    const dotsInterval = setInterval(() => {
-      setDots(prev => prev.length >= 3 ? '' : prev + '.');
-    }, 600);
+			const supportsCache = !!window.caches;
 
-    return () => {
-      clearInterval(progressInterval);
-      clearInterval(textInterval);
-      clearInterval(dotsInterval);
-    };
-  }, []);
+			try {
+				const ev = await fetch("/events.json")
+					.then((r) => (r.ok ? r.json() : null))
+					.catch(() => null);
+				if (ev && ev.posts) {
+					const found = new Set();
+					ev.posts.forEach((group) => {
+						if (Array.isArray(group)) {
+							group.forEach((item) => {
+								if (item && item.img && typeof item.img === "string" && item.img.startsWith("/Eventposter/") && item.img.endsWith(".webp")) {
+									found.add(item.img);
+								}
+							});
+						}
+					});
+					if (found.size) {
+						found.forEach((p) => {
+							if (!assetsToPreload.includes(p)) assetsToPreload.push(p);
+						});
+					}
+				}
 
-  return (
-    <div className="fixed inset-0 bg-gradient-to-br from-soothing_black via-primary to-black flex items-center justify-center overflow-hidden">
-      {/* Elegant Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        {/* Vertical lines */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-px bg-gradient-to-b from-main_primary to-transparent animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              height: `${Math.random() * 80 + 100}px`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-        {/* Horizontal lines */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={`h-${i}`}
-            className="absolute h-px bg-gradient-to-r from-main_primary to-transparent animate-pulse"
-            style={{
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 80 + 100}px`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
+				if (supportsCache) {
+					const cache = await caches.open("assets-v1.0.0");
+					await Promise.all(
+						assetsToPreload.map(async (url) => {
+							if (cancelled) return;
+							try {
+								const matched = await cache.match(url);
+								if (matched) return;
+								const resp = await fetch(url).catch(() => null);
+								if (resp) {
+									try {
+										await cache.put(url, resp.clone());
+									} catch (e) {
+										console.debug("InitialLoader: cache.put failed", e);
+									}
+								}
+							} catch (e) {
+								console.debug("InitialLoader: preload fetch failed", e);
+							} finally {
+								try {
+									const img = new Image();
+									img.src = url;
+								} catch (e) {
+									console.debug("InitialLoader: image constructor failed", e);
+								}
+							}
+						})
+					);
+				} else {
+					assetsToPreload.forEach((url) => {
+						try {
+							const img = new Image();
+							img.src = url;
+						} catch (e) {
+							console.debug("InitialLoader: image preload failed", e);
+						}
+					});
+				}
+			} catch (e) {
+				console.debug("InitialLoader: preload failed", e);
+			}
 
-      {/* Floating Tech Elements */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={`particle-${i}`}
-            className="absolute w-2 h-2 bg-main_primary/40 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
+			if (!cancelled) setAssetsLoaded(true);
+		}
 
-      {/* Main Content */}
-      <div className="relative z-10 text-center max-w-lg mx-auto px-6">
-        {/* Logo/Title Section */}
-        <div className="mb-12">
-          <div className="relative">
-            <h1 className="text-6xl md:text-7xl font-clash font-extrabold text-white leading-tight">
-              BITS2BYTES
-            </h1>
-            <div className="relative -mt-4">
-              <span className="text-5xl md:text-6xl font-clash font-black text-main_primary">
-                2025
-              </span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-clash font-bold text-white/90 tracking-wider mt-2">
-              TECH FEST
-            </h3>
-          </div>
-        </div>
+		// shorter safety so loader can't block for too long
+		const safety = setTimeout(() => setAssetsLoaded(true), 3000);
 
-        {/* Modern Loading Animation */}
-        <div className="relative mb-10">
-          <div className="w-40 h-40 mx-auto relative">
-            {/* Outer rotating ring */}
-            <div className="absolute inset-0 border-2 border-main_primary/30 rounded-full border-t-main_primary animate-spin"></div>
+		preload();
+		return () => {
+			cancelled = true;
+			clearTimeout(safety);
+		};
+	}, []);
 
-            {/* Inner rotating ring */}
-            <div className="absolute inset-6 border-2 border-white/20 rounded-full border-b-white animate-spin"
-              style={{ animationDirection: 'reverse', animationDuration: '2s' }}></div>
+	useEffect(() => {
+		const letterInterval = setInterval(() => {
+			setCurrentLetterIndex((prev) => {
+				if (prev < letters.length - 1) {
+					return prev + 1;
+				} else {
+					clearInterval(letterInterval);
+					setTimeout(() => {
+						setTimeout(() => {
+							setAnimationDone(true);
+						}, 1000);
+					}, 600);
+					return prev;
+				}
+			});
+		}, 500);
 
-            {/* Center core with progress */}
-            <div className="absolute inset-12 bg-gradient-to-br from-main_primary to-purple-800 rounded-full flex items-center justify-center shadow-xl">
-              <div className="text-white font-clash text-lg font-bold">
-                {Math.floor(progress)}%
-              </div>
-            </div>
+		return () => clearInterval(letterInterval);
+	}, [letters.length]);
 
-            {/* Orbiting dots */}
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={`orbit-${i}`}
-                className="absolute w-3 h-3 bg-main_primary rounded-full animate-spin shadow-lg"
-                style={{
-                  left: '50%',
-                  top: '50%',
-                  transform: `rotate(${i * 60}deg) translateY(-85px)`,
-                  transformOrigin: '0 85px',
-                  animationDuration: '4s',
-                  animationDelay: `${i * 0.5}s`
-                }}
-              />
-            ))}
-          </div>
-        </div>
+	useEffect(() => {
+		if (animationDone && assetsLoaded) {
+			onFinish();
+		}
+	}, [animationDone, assetsLoaded, onFinish]);
 
-        {/* Enhanced Progress Bar */}
-        <div className="mb-8">
-          <div className="w-full bg-gray-800/50 rounded-full h-3 overflow-hidden backdrop-blur-sm border border-gray/20">
-            <div
-              className="h-full bg-gradient-to-r from-main_primary to-purple-600 transition-all duration-500 ease-out relative rounded-full"
-              style={{ width: `${progress}%` }}
-            >
-              <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-4 bg-white/40 animate-pulse rounded-full"></div>
-            </div>
-          </div>
-          <div className="flex justify-between text-xs text-gray mt-3">
-            <span className="font-chakra">Loading Experience...</span>
-            <span className="font-clash font-bold">{Math.floor(progress)}% Complete</span>
-          </div>
-        </div>
+	return (
+		<div className="loader__wrapper relative w-full h-screen overflow-hidden">
+			<div className="cube-wrapper relative z-10">
+				<div className="loader-cube">
+					{letters.map((letter, index) => (
+						<div
+							key={index}
+							className={`loader-char ${index === currentLetterIndex ? animationClasses[index] : ""}`}
+							style={{
+								opacity: index === currentLetterIndex ? 1 : 0,
+								zIndex: index === currentLetterIndex ? 10 : 1,
+							}}
+						>
+							<span>{letter}</span>
+						</div>
+					))}
+				</div>
+			</div>
 
-        {/* Loading Status Text */}
-        <div className="mb-8">
-          <div className="text-main_primary font-clash text-base font-semibold tracking-wide">
-            {loadingText}{dots}
-          </div>
-        </div>
-
-        {/* Tech Categories */}
-        <div className="flex flex-wrap justify-center gap-3 text-xs text-gray/80 mb-6">
-          {[
-            'ARTIFICIAL INTELLIGENCE',
-            'ROBOTICS',
-            'CODING CONTESTS',
-            'WORKSHOPS',
-            'INNOVATION',
-            'GAMING'
-          ].map((tech, i) => (
-            <span
-              key={tech}
-              className="px-3 py-1 border border-gray/30 rounded-full backdrop-blur-sm bg-white/5 font-chakra tracking-wide hover:border-main_primary/50 transition-colors duration-300"
-              style={{ animationDelay: `${i * 0.4}s` }}
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Completion Animation */}
-        {isComplete && (
-          <div className="animate-pulse">
-            <div className="text-main_primary text-sm font-clash font-bold tracking-wider">
-              🚀 READY FOR INNOVATION!
-            </div>
-          </div>
-        )}
-
-        {/* Bottom Tagline */}
-        <div className="text-gray/70 text-xs font-chakra tracking-wider">
-          EXPERIENCE THE FUTURE OF TECHNOLOGY
-        </div>
-      </div>
-
-      {/* Elegant Corner Accents */}
-      <div className="absolute top-6 left-6 w-10 h-10 border-l-2 border-t-2 border-main_primary/60 animate-pulse"></div>
-      <div className="absolute top-6 right-6 w-10 h-10 border-r-2 border-t-2 border-main_primary/60 animate-pulse"></div>
-      <div className="absolute bottom-6 left-6 w-10 h-10 border-l-2 border-b-2 border-main_primary/60 animate-pulse"></div>
-      <div className="absolute bottom-6 right-6 w-10 h-10 border-r-2 border-b-2 border-main_primary/60 animate-pulse"></div>
-
-      {/* Brand Watermark */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs text-gray/40 font-chakra tracking-widest">
-        BITS2BYTES • TECH FEST 2025
-      </div>
-    </div>
-  );
-};
+			<div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+				<div className="flex space-x-1">
+					{[...Array(3)].map((_, i) => (
+						<div
+							key={i}
+							className="w-2 h-2 bg-white rounded-full animate-pulse"
+							style={{
+								animationDelay: `${i * 0.2}s`,
+								animationDuration: "1s",
+							}}
+						></div>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+}

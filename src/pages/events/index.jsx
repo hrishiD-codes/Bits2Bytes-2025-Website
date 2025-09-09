@@ -38,7 +38,7 @@ export default function Events({ posts, names }) {
       {/* <progress max="100" value="0"></progress> */}
 
       <main>
-        <div className='h-[15rem] md:h-[20rem] bg-[url("/banner.png")] object-fill text-white font-clash tracking-wide font-black flex flex-col items-center justify-center'>
+        <div className='h-[15rem] md:h-[20rem] bg-[url("/banner.webp")] object-fill text-white font-clash tracking-wide font-black flex flex-col items-center justify-center'>
           <span className="text-[1rem] pt-12 md:pt-16 md:text-[4rem]">
             BITS2BYTES' 2025
           </span>
@@ -79,6 +79,7 @@ export default function Events({ posts, names }) {
                     height={500}
                     alt="Event's Image"
                     className="cursor-pointer object-fill transform transition-all duration-500 ease-in-out"
+                    loading="lazy"
                   />
                 </Link>
               </div>

@@ -61,6 +61,7 @@ function EventsDetails(props) {
                 alt={props.title}
                 width={500}
                 height={500}
+                loading="lazy"
               />
               <div className="relative flex flex-col justify-between w-full px-2 md:p-8 gap-16">
                 <div className="flex flex-col gap-1">

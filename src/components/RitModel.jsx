@@ -6,17 +6,17 @@ export default function RitModel() {
     {
       id: 1,
       title: "Technical Events",
-      image: "/slider/tech.png",
+      image: "/slider/tech.webp",
     },
     {
       id: 2,
       title: "Robotics",
-      image: "/slider/robotics.jpeg",
+      image: "/slider/robotics.webp",
     },
     {
       id: 3,
       title: "Games",
-      image: "/slider/games.jpg",
+      image: "/slider/games.webp",
     },
     {
       id: 4,
@@ -26,7 +26,7 @@ export default function RitModel() {
     {
       id: 5,
       title: "Talkshows",
-      image: "/slider/events.jpg",
+      image: "/slider/events.webp",
     },
   ];
 

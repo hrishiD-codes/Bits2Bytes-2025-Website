@@ -11,6 +11,7 @@ export default function NotFound() {
         height={400}
         alt="logo"
         className="w-[12rem] h-[12rem] xl:w-auto xl:h-auto"
+        loading="lazy"
       />
       <div className="flex flex-col gap-3">
         <h1 className="text-lg md:text-xl font-medium font-ibm">

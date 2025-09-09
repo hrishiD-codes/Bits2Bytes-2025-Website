@@ -115,7 +115,7 @@ progress::-webkit-progress-value {
     height: 15%;
     margin: 0 0 10px 0;
   }
-  
+
   .flex-card-container.active {
     width: 70%;
     height: 40%;

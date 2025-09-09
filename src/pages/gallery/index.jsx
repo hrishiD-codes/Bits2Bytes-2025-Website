@@ -17,17 +17,17 @@ export default function Gallery() {
 
     // Sample gallery images - replace with your actual fest photos
     const galleryImages = [
-        { id: 1, src: '/Gallery/workshop1.jpg', alt: 'Workshop 2k25', category: 'workshop' },
-        { id: 2, src: '/Gallery/autobit.jpg', alt: 'Autobit 2k25', category: 'workshop' },
-        // { id: 2, src: '/Gallery/song.png', alt: 'Coding Competition', category: 'competition' },
-        // { id: 3, src: '/Gallery/song.png', alt: 'Robotics Exhibition', category: 'exhibition' },
-        // { id: 4, src: '/Gallery/song.png', alt: 'Cultural Night', category: 'cultural' },
-        // { id: 5, src: '/Gallery/song.png', alt: 'Innovation Showcase', category: 'showcase' },
-        // { id: 6, src: '/Gallery/song.png', alt: 'Team Building', category: 'team' },
-        // { id: 7, src: '/Gallery/song.png', alt: 'Awards Ceremony', category: 'ceremony' },
-        // { id: 8, src: '/Gallery/song.png', alt: 'Tech Talk Session', category: 'talk' },
-        // { id: 9, src: '/Gallery/song.png', alt: 'Gaming Tournament', category: 'gaming' },
-        // { id: 10, src: '/Gallery/song.png', alt: 'Opening Ceremony', category: 'ceremony' }
+        { id: 1, src: '/Gallery/workshop1.webp', alt: 'Workshop 2k25', category: 'workshop' },
+        { id: 2, src: '/Gallery/autobit.webp', alt: 'Autobit 2k25', category: 'workshop' },
+        // { id: 2, src: '/Gallery/song.webp', alt: 'Coding Competition', category: 'competition' },
+        // { id: 3, src: '/Gallery/song.webp', alt: 'Robotics Exhibition', category: 'exhibition' },
+        // { id: 4, src: '/Gallery/song.webp', alt: 'Cultural Night', category: 'cultural' },
+        // { id: 5, src: '/Gallery/song.webp', alt: 'Innovation Showcase', category: 'showcase' },
+        // { id: 6, src: '/Gallery/song.webp', alt: 'Team Building', category: 'team' },
+        // { id: 7, src: '/Gallery/song.webp', alt: 'Awards Ceremony', category: 'ceremony' },
+        // { id: 8, src: '/Gallery/song.webp', alt: 'Tech Talk Session', category: 'talk' },
+        // { id: 9, src: '/Gallery/song.webp', alt: 'Gaming Tournament', category: 'gaming' },
+        // { id: 10, src: '/Gallery/song.webp', alt: 'Opening Ceremony', category: 'ceremony' }
     ];
 
     useEffect(() => {
@@ -205,6 +205,10 @@ export default function Gallery() {
                                             width={500}
                                             height={500}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            loading="lazy"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            placeholder="blur"
+                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+IRjWjBqO6O2mhP//Z"
                                         />
 
                                         {/* Overlay */}
@@ -296,6 +300,7 @@ export default function Gallery() {
                                         width={800}
                                         height={600}
                                         className="w-full h-auto max-h-[80vh] object-contain"
+                                        loading="lazy"
                                     />
 
                                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">

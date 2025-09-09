@@ -47,6 +47,7 @@ export default function School() {
                             src="/School.svg"
                             alt="School Logo"
                             className="animate-pulse object-contain"
+                            loading="lazy"
                         />
                     </div>
 

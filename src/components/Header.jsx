@@ -52,6 +52,7 @@ export default function Header() {
             height={52}
             alt="TIU_Logo"
             className="rounded-full"
+            loading="lazy"
           />
           <Image
             src="/25_logo.svg"
@@ -59,13 +60,15 @@ export default function Header() {
             height={60}
             alt="25th year"
             className=""
+            loading="lazy"
           />
           <Image
-            src="/tbit.svg"
+            src="/TBIT.svg"
             width={50}
             height={50}
             alt="TBIT_logo"
             className=""
+            loading="lazy"
           />
         </Link>
 

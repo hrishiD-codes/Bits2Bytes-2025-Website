@@ -1,0 +1,233 @@
+.cardsContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 420px;
+    perspective: 1500px;
+}
+
+.card {
+    position: absolute;
+    width: 340px;
+    height: 440px;
+    border-radius: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.55s cubic-bezier(.22, 1, .36, 1), box-shadow 0.35s ease, z-index 0s;
+    transform-origin: center center;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.cardImage {
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Base fan positions (5 cards) */
+.card1 {
+    transform: translateX(-420px) rotate(-16deg) scale(.88);
+    z-index: 1;
+}
+
+.card2 {
+    transform: translateX(-210px) rotate(-6deg) scale(.94);
+    z-index: 2;
+}
+
+.card3 {
+    transform: translateX(0px) rotate(0deg) scale(1);
+    z-index: 3;
+}
+
+.card4 {
+    transform: translateX(210px) rotate(6deg) scale(.94);
+    z-index: 2;
+}
+
+.card5 {
+    transform: translateX(420px) rotate(16deg) scale(.88);
+    z-index: 1;
+}
+
+/* Hover: bring hovered card forward and slightly bump neighbors */
+.card:focus,
+.card:hover {
+    transform: translateY(-10px) translateZ(40px) scale(1.06) rotate(0deg);
+    z-index: 10;
+    box-shadow: 0 28px 60px rgba(6, 10, 24, 0.6);
+}
+
+/* Moderated sibling shifts using :has() where supported */
+.cardsContainer:has(.card1:hover) .card2 {
+    transform: translateX(-90px) rotate(-4deg) scale(.9);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card1:hover) .card3 {
+    transform: translateX(40px) rotate(0deg) scale(.94);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card1:hover) .card4 {
+    transform: translateX(200px) rotate(6deg) scale(.92);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card1:hover) .card5 {
+    transform: translateX(360px) rotate(12deg) scale(.9);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card2:hover) .card1 {
+    transform: translateX(-310px) rotate(-10deg) scale(.9);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card2:hover) .card3 {
+    transform: translateX(40px) rotate(2deg) scale(.96);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card2:hover) .card4 {
+    transform: translateX(200px) rotate(8deg) scale(.92);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card2:hover) .card5 {
+    transform: translateX(360px) rotate(14deg) scale(.9);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card3:hover) .card1 {
+    transform: translateX(-360px) rotate(-12deg) scale(.92);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card3:hover) .card2 {
+    transform: translateX(-160px) rotate(-4deg) scale(.94);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card3:hover) .card4 {
+    transform: translateX(160px) rotate(4deg) scale(.94);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card3:hover) .card5 {
+    transform: translateX(320px) rotate(12deg) scale(.9);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card4:hover) .card5 {
+    transform: translateX(300px) rotate(10deg) scale(.92);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card4:hover) .card3 {
+    transform: translateX(-40px) rotate(0deg) scale(.96);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card4:hover) .card2 {
+    transform: translateX(-200px) rotate(-8deg) scale(.92);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card4:hover) .card1 {
+    transform: translateX(-360px) rotate(-12deg) scale(.9);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card5:hover) .card4 {
+    transform: translateX(140px) rotate(6deg) scale(.94);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card5:hover) .card3 {
+    transform: translateX(0px) rotate(0deg) scale(.96);
+    z-index: 2;
+}
+
+.cardsContainer:has(.card5:hover) .card2 {
+    transform: translateX(-180px) rotate(-8deg) scale(.92);
+    z-index: 1;
+}
+
+.cardsContainer:has(.card5:hover) .card1 {
+    transform: translateX(-340px) rotate(-12deg) scale(.9);
+    z-index: 1;
+}
+
+/* keyboard accessibility focus outline */
+.card:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.12);
+    outline-offset: 6px;
+}
+
+/* Small screens */
+@media (max-width: 880px) {
+    .cardsContainer {
+        height: 320px;
+    }
+
+    .card {
+        width: 260px;
+        height: 340px;
+    }
+
+    .card1 {
+        transform: translateX(-210px) rotate(-12deg) scale(.88);
+    }
+
+    .card2 {
+        transform: translateX(-110px) rotate(-6deg) scale(.94);
+    }
+
+    .card3 {
+        transform: translateX(0px) rotate(0deg) scale(1);
+    }
+
+    .card4 {
+        transform: translateX(110px) rotate(6deg) scale(.94);
+    }
+
+    .card5 {
+        transform: translateX(210px) rotate(12deg) scale(.88);
+    }
+}
+
+@media (max-width: 520px) {
+    .cardsContainer {
+        height: 260px;
+    }
+
+    .card {
+        width: 200px;
+        height: 260px;
+        border-radius: 12px;
+    }
+
+    .card1 {
+        transform: translateX(-140px) rotate(-10deg) scale(.86);
+    }
+
+    .card2 {
+        transform: translateX(-70px) rotate(-6deg) scale(.92);
+    }
+
+    .card3 {
+        transform: translateX(0px) rotate(0deg) scale(1);
+    }
+
+    .card4 {
+        transform: translateX(70px) rotate(6deg) scale(.92);
+    }
+
+    .card5 {
+        transform: translateX(140px) rotate(10deg) scale(.86);
+    }
+}

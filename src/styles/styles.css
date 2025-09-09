@@ -287,4 +287,242 @@
   }
 }
 
-/* SPLIT SLIDER CSS CODE*/
+/* Preloader cube letter animations */
+.loader__wrapper {
+  background: radial-gradient(700px 350px at 50% -10%, rgba(151, 71, 255, 0.12), transparent 60%) #000;
+  position: fixed;
+  /* overlay so page content can render underneath */
+  inset: 0;
+  pointer-events: none;
+  /* non-blocking */
+}
+
+.cube-wrapper {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loader-cube {
+  position: relative;
+  width: 16rem;
+  height: 10rem;
+}
+
+.loader-char {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-clash-display);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 14px rgba(151, 71, 255, 0.45), 0 0 30px rgba(151, 71, 255, 0.25);
+  font-size: clamp(3rem, 10vw, 7rem);
+}
+
+/* Keyframes for directional in->out transitions */
+@keyframes fromRightOutBottomKF {
+  0% {
+    transform: translate(70%, 0) scale(0.9) rotate(-6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(50%, 60%) scale(0.9) rotate(6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fromTopOutRightKF {
+  0% {
+    transform: translate(0, -70%) scale(0.9) rotate(6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(60%, -30%) scale(0.9) rotate(-4deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fromLeftOutTopKF {
+  0% {
+    transform: translate(-70%, 0) scale(0.9) rotate(6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -60%) scale(0.9) rotate(-6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fromBottomOutLeftKF {
+  0% {
+    transform: translate(0, 70%) scale(0.9) rotate(-6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-60%, 30%) scale(0.9) rotate(4deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fromRightOutTopKF {
+  0% {
+    transform: translate(70%, -40%) scale(0.9) rotate(4deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(60%, -60%) scale(0.9) rotate(-6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fromBottomOutRightKF {
+  0% {
+    transform: translate(30%, 70%) scale(0.9) rotate(-4deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(60%, 30%) scale(0.9) rotate(5deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes fromLeftOutBottomKF {
+  0% {
+    transform: translate(-70%, 40%) scale(0.9) rotate(-4deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-60%, 60%) scale(0.9) rotate(6deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* Utility animation classes */
+.fromRightOutBottom {
+  animation: fromRightOutBottomKF 0.9s ease both;
+}
+
+.fromTopOutRight {
+  animation: fromTopOutRightKF 0.9s ease both;
+}
+
+.fromLeftOutTop {
+  animation: fromLeftOutTopKF 0.9s ease both;
+}
+
+.fromBottomOutLeft {
+  animation: fromBottomOutLeftKF 0.9s ease both;
+}
+
+.fromRightOutTop {
+  animation: fromRightOutTopKF 0.9s ease both;
+}
+
+.fromBottomOutRight {
+  animation: fromBottomOutRightKF 0.9s ease both;
+}
+
+.fromLeftOutBottom {
+  animation: fromLeftOutBottomKF 0.9s ease both;
+}
