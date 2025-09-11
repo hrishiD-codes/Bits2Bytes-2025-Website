@@ -24,7 +24,7 @@ export default function EventSlider() {
                   Return Zer0
                 </span>
                 <Image
-                  src="/retro.jpeg"
+                  src="/Eventposter/returnzero.png"
                   alt="talk show"
                   width={500}
                   height={500}
@@ -61,7 +61,7 @@ export default function EventSlider() {
                   Zer0 Day CTF
                 </span>
                 <Image
-                  src="/retro.jpeg"
+                  src="/Eventposter/zeroday.png"
                   alt="talk show"
                   width={500}
                   height={500}

@@ -38,7 +38,7 @@
               "post": "Technical Secretary",
               "img": "/TeamImages/TS.jpg",
               "insta": "https://www.instagram.com/a_boy_name_hrishi/",
-              "linkedin": "www.linkedin.com/in/dashrishikesh"
+              "linkedin": "https://www.linkedin.com/in/dashrishikesh"
             },
             {
               "id": "tf2",
@@ -533,18 +533,10 @@
               "post": "Design Coordinator & Media",
               "img": "/TeamImages/TS.jpg",
               "insta": "https://www.instagram.com/a_boy_name_hrishi/",
-              "linkedin": "www.linkedin.com/in/dashrishikesh"
+              "linkedin": "https://www.linkedin.com/in/dashrishikesh"
             },
             {
               "id": "d6",
-              "name": "Amit Mondal",
-              "post": "Design Coordinator",
-              "img": "/TeamImages/amit.jpg",
-              "insta": "https://www.instagram.com/amit14_02",
-              "linkedin": "https://www.linkedin.com/in/amit-mondal-578618218/"
-            },
-            {
-              "id": "d7",
               "name": "Jeet Santra",
               "post": "Media Lead",
               "img": "/TeamImages/jeetSantra.jpg",
@@ -552,7 +544,7 @@
               "linkedin": "https://www.linkedin.com/in/jeet-santra-9919b536a/"
             },
             {
-              "id": "d8",
+              "id": "d7",
               "name": "Surajit Sadhukhan",
               "post": "Editor",
               "img": "/TeamImages/surajit.jpg",
@@ -560,7 +552,7 @@
               "linkedin": "https://www.linkedin.com/in/surajit-sadhukhan-4b5b62324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },
             {
-              "id": "d9",
+              "id": "d8",
               "name": "Aritra Mondal",
               "post": "Editor",
               "img": "/TeamImages/aritra.jpg",
@@ -568,7 +560,7 @@
               "linkedin": " https://www.linkedin.com/in/aritra-mondal-aa32a0325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },
             {
-              "id": "d10",
+              "id": "d9",
               "name": "Eman Mahato",
               "post": "Editor",
               "img": "/TeamImages/emon.jpg",
@@ -576,7 +568,7 @@
               "linkedin": "https://www.linkedin.com/in/eman-mahato-5726a7322?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },
             {
-              "id": "d11",
+              "id": "d10",
               "name": "Mehul Singh ",
               "post": "Editor",
               "img": "/TeamImages/singh.jpg",
@@ -599,7 +591,7 @@
               "post": "Lead Developer",
               "img": "/TeamImages/TS.jpg",
               "insta": "https://www.instagram.com/a_boy_name_hrishi/",
-              "linkedin": "www.linkedin.com/in/dashrishikesh",
+              "linkedin": "https://www.linkedin.com/in/dashrishikesh",
               "github": "https://github.com/hrishiD-codes"
             },
             {

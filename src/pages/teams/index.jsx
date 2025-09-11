@@ -85,7 +85,7 @@ function Team(props) {
                         top: `${100 + (170 - (Object.keys(member).filter(key => ['linkedin', 'insta', 'github', 'facebook'].includes(key) && member[key]).length * 40)) / 5}px`
                       }}>
                         {member.linkedin && (
-                          <Link href={`${member.linkedin}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110">
+                          <Link href={`${member.linkedin}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110" target="_blank">
                             <FaLinkedinIn
                               size="1.1rem"
                               className="text-white/80 hover:text-main_primary transition-colors duration-300"
@@ -93,7 +93,7 @@ function Team(props) {
                           </Link>
                         )}
                         {member.insta && (
-                          <Link href={`${member.insta}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110">
+                          <Link href={`${member.insta}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110" target="_blank">
                             <FaInstagram
                               size="1.1rem"
                               className="text-white/80 hover:text-main_primary transition-colors duration-300"
@@ -101,7 +101,7 @@ function Team(props) {
                           </Link>
                         )}
                         {member.github && (
-                          <Link href={`${member.github}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110">
+                          <Link href={`${member.github}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110" target="_blank" >
                             <FaGithub
                               size="1.1rem"
                               className="text-white/80 hover:text-main_primary transition-colors duration-300"
@@ -109,7 +109,7 @@ function Team(props) {
                           </Link>
                         )}
                         {member.facebook && (
-                          <Link href={`${member.facebook}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110">
+                          <Link href={`${member.facebook}`} className="bg-white/10 hover:bg-main_primary/20 border border-white/20 hover:border-main_primary/40 p-2 rounded transition-all duration-300 transform hover:scale-110" target="_blank">
                             <FaFacebook
                               size="1.2rem"
                               className="text-white/80 hover:text-main_primary transition-colors duration-300"
