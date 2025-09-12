@@ -1,7 +1,7 @@
 
 # Bits2Bytes 2025 Official Website
 
-Welcome to the official repository for the **Bits2Bytes 2025** college fest website. This project serves as the digital platform for all information, updates, and resources related to the annual fest organized by Techno Bengal Institue of Technology, Kolkata.
+Welcome to the official repository for the **Bits2Bytes 2025** college fest website. This project serves as the digital platform for all information, updates, and resources related to the annual fest organized by Techno Bengal Institute of Technology, Kolkata.
 
 ## Overview
 
@@ -33,7 +33,7 @@ To set up the project locally:
 
 ## Contribution Guidelines
 
-All contributions must adhere to the standards and policies of Techno India University. Please ensure that all code, assets, and documentation are appropriate for an official college platform.
+All contributions must adhere to the standards and policies of Techno Bengal Institute of Technology. Please ensure that all code, assets, and documentation are appropriate for an official college platform.
 
 1. Fork the repository and create a new branch for your feature or fix.
 2. Submit a pull request with a clear description of your changes.
@@ -49,4 +49,4 @@ For official queries, please contact the organizing committee...
 
 ---
 
-© 2025 Techno Bengal Institue of Technology, Kolkata. All rights reserved.
+© 2025 Techno Bengal Institute of Technology, Kolkata. All rights reserved.
