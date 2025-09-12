@@ -20,7 +20,7 @@ export default function Gallery() {
         { id: 1, src: '/Gallery/workshop1.jpg', alt: 'Workshop 2k25', category: 'workshop' },
         { id: 2, src: '/Gallery/autobit.jpg', alt: 'Autobit 2k25', category: 'workshop' },
         // { id: 2, src: '/Gallery/song.png', alt: 'Coding Competition', category: 'competition' },
-        // { id: 3, src: '/Gallery/song.png', alt: 'Robotics Exhibition', category: 'exhibition' },
+        { id: 3, src: '/Gallery/hunt.jpg', alt: 'Satyanweshi 2k25', category: 'Event Planning' },
         // { id: 4, src: '/Gallery/song.png', alt: 'Cultural Night', category: 'cultural' },
         // { id: 5, src: '/Gallery/song.png', alt: 'Innovation Showcase', category: 'showcase' },
         // { id: 6, src: '/Gallery/song.png', alt: 'Team Building', category: 'team' },
